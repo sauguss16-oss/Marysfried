@@ -29,16 +29,18 @@
         }
 
         /* --- HERO: IMAGEN PRINCIPAL --- */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
-    
-    /* Unión del degradado y la imagen */
-    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("fondo.PNG");
-    
-
-
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url(fondo.PNG);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .logo-png { 
             position: absolute; 
             top: 20px; 
