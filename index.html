@@ -29,17 +29,26 @@
         }
 
         /* --- HERO: IMAGEN PRINCIPAL --- */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), img src="fondo.PNG"
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+.hero {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
+    
+    /* Unión del degradado y la imagen */
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url("fondo.PNG");
+    
+    /* Ajustes de visualización */
+    background-size: cover;           /* La imagen cubre todo el contenedor sin deformarse */
+    background-position: center;      /* La imagen se centra vertical y horizontalmente */
+    background-repeat: no-repeat;     /* Evita que la imagen se repita como mosaico */
+    background-attachment: scroll;    /* Cambia a 'fixed' si quieres un efecto parallax básico */
+    
+    /* Asegura que el contenido interno se alinee bien */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
         }
 
         .logo-png { 
@@ -772,7 +781,8 @@
 
 
     <div class="menu-category" style="margin-top: 60px;">
-        <div class="category-banner" style="background-image: url('mosaico4.PNG');">
+      <div class="category-banner" style="background-image: url(mosaico4.PNG);">
+
             <div class="promo-overlay">
                 <h2 style="font-family:'Oswald'; margin:0; letter-spacing: 1px;">PIEZAS INDIVIDUALES</h2>
             </div>
@@ -816,7 +826,8 @@
         </div>
     </div>
     <div class="menu-category" style="margin-top: 60px;">
-        <div class="category-banner" style="background-image: url(salsas.PNG');">
+     <div class="category-banner" style="background-image: url(salsas.PNG);">
+
             <div class="promo-overlay">
                 <h2 style="font-family:'Oswald'; margin:0; letter-spacing: 1px;">SALSAS EXTRAS</h2>
             </div>
@@ -925,9 +936,12 @@
                     <p style="font-size:0.95rem; margin:0; line-height: 1.4;">Nuestra receta es secreta, pero nuestra pasión es compartida con cada cliente.</p>
                 </div>
 
-                <div class="side-photo-row">
-                    <div class="photo-frame-small"><img src="identidad3.PNG" alt="Detalle 1"></div>
-                    <div class="photo-frame-small"><img src="identidad4.PNG" alt="Detalle 2"></div>
+              <div class="photo-frame-small">
+                    <img src="identidad3.PNG" alt="Nuestra Tradición">
+                </div>
+                 <div class="photo-frame-small">
+                    <img src="identidad4.PNG" alt="Nuestra Tradición">
+                </div>
                 </div>
 
                 <div class="history-logo-display">
@@ -935,8 +949,9 @@
                 </div>
             </div>
 
-            <div class="history-footer-frame">
-                <img src="identidad5.PNG" alt="Comunidad Mary's">
+           <div class="photo-frame-medium">
+                    <img src="identidad5.PNG"
+                alt="Comunidad Mary's">
                 <div class="footer-overlay-text">
                     <h3 style="font-family:'Oswald'; margin:0;">PASIÓN POR EL POLLO FRITO</h3>
                 </div>
