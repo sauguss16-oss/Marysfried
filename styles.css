@@ -1,10 +1,10 @@
 /* =========================================
-   VARIABLES Y BASE
+   VARIABLES Y BASE - UNIFICADO
    ========================================= */
 :root {
-  --rojo: #d62828;
+  --rojo: #bd161c;     /* Tu rojo oficial Mary's */
   --naranja: #ff9f1c;
-  --amarillo: #ffbf69;
+  --amarillo: #f3b412; /* Tu amarillo oficial Mary's */
   --gris: #555;
   --fondo: #fffaf3;
   --blanco: #ffffff;
@@ -32,7 +32,7 @@ body {
     position: relative;
     width: 100%;
     height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('img/fondo.PNG');
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('fondo.PNG');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -61,50 +61,86 @@ body {
     text-decoration: none;
     color: var(--rojo);
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-}
-
-.search-bar {
-    background: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    width: 80%;
-    max-width: 400px;
-}
-
-.search-bar input {
-    border: none;
-    outline: none;
-    padding-left: 10px;
-    width: 100%;
-}
-
-/* =========================================
-   BOTONES SOCIALES Y WHATSAPP
-   ========================================= */
-.social-row {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-}
-
-.circle-btn {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
     transition: 0.3s;
 }
 
+.nav-links a:hover { color: var(--negro); }
+
+/* =========================================
+   MENÚ Y TARJETAS (ESTILO MARY'S)
+   ========================================= */
+.promos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.promo-card {
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.promo-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: var(--rojo);
+}
+
+.promo-img-wrapper {
+    width: 100%;
+    height: 220px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.promo-img-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* Para que no se corte el pollo */
+    padding: 10px;
+}
+
+.promo-info { padding: 20px; text-align: center; }
+
+.promo-info h3 { font-family: 'Oswald'; font-size: 1.4rem; color: var(--negro); margin-bottom: 10px; }
+
+.promo-desc { font-size: 0.9rem; color: #666; min-height: 45px; }
+
+.promo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.price { font-size: 1.6rem; color: var(--rojo); font-weight: 900; }
+
+.btn-promo {
+    background: var(--rojo);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Oswald';
+    transition: 0.3s;
+}
+
+.btn-promo:hover { background: var(--negro); transform: scale(1.1); }
+
+/* =========================================
+   ELEMENTOS FLOTANTES
+   ========================================= */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -120,75 +156,42 @@ body {
     font-size: 30px;
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-/* =========================================
-   MOSAICO (GRID)
-   ========================================= */
-.mosaic-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 150px;
-    gap: 10px;
-    padding: 20px;
-}
-
-.box {
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-}
-
-.box-large { grid-column: span 2; grid-row: span 2; }
-.box-tall { grid-row: span 2; }
-
-/* =========================================
-   PROMOCIONES Y TARJETAS
-   ========================================= */
-.section { padding: 40px 6%; text-align: center; }
-
-.section-title {
-    font-family: 'Oswald';
-    background: linear-gradient(90deg, var(--rojo), var(--naranja));
-    color: white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-
-.promos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.promo-card {
-    background: white;
-    border: 3px solid var(--rojo);
-    border-radius: 20px;
-    overflow: hidden;
     transition: 0.3s;
 }
 
-.promo-card:hover { transform: scale(1.03); }
+.whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
-.promo-img-wrapper img { width: 100%; height: 200px; object-fit: cover; }
-
-.promo-info { padding: 20px; }
-
-.price {
-    font-size: 1.5rem;
-    color: var(--rojo);
-    font-weight: 900;
+/* =========================================
+   BANNERS DE CATEGORÍA
+   ========================================= */
+.category-banner {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
-.btn-promo {
-    background: var(--rojo);
+.promo-overlay {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Ocultar nav en móvil para usar menú hamburguesa si lo tienes */
+    .mosaic-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { height: 50vh; }
 }
