@@ -215,81 +215,146 @@
         <div class="box-tall box" style="background-image: url('mosaico7.PNG');"></div>
     </main>
 
-    <section class="krunch-invite">
-        <div class="triangle-decor"></div>
-        <div class="krunch-text">
-            <h2 style="margin:0; font-family:'Oswald'; letter-spacing: 1px;">¿QUIERES SER UN CLIENTE KRUNCH?</h2>
-            <p style="margin:5px 0 0 0; opacity: 0.9;">Suscríbete y obtén beneficios en cada compra.</p>
-        </div>
-    </section>
+<section class="krunch-invite">
+    <div class="triangle-decor"></div>
+    <div class="krunch-text">
+        <h2 style="margin:0; font-family:'Oswald'; letter-spacing: 1px;">¿QUIERES SER UN CLIENTE KRUNCH?</h2>
+        <p style="margin:5px 0 0 0; opacity: 0.9;">Suscríbete y obtén beneficios en cada compra.</p>
+    </div>
+</section>
 
-    </body>
-</html>
-    <section id="frecuentes" class="tab-content" style="padding: 40px 5%; background: #fffcf5;">
+<section id="frecuentes" class="tab-content" style="padding: 40px 5%; background: #fffcf5;">
+    
+    <div class="loyalty-card">
+        <div class="card-header">
+            <h2 style="margin:0; font-family:'Oswald'; letter-spacing: 1px; text-transform: uppercase;">Tarjeta de Lealtad</h2>
+            <p style="margin:5px 0 15px 0; font-size: 0.9rem;">¡Colecciona 5 piezas y la 6ta es <b>GRATIS</b>!</p>
+        </div>
         
-        <div class="loyalty-card">
-            <div class="card-header">
-                <h2 style="margin:0; font-family:'Oswald'; letter-spacing: 1px; text-transform: uppercase;">Tarjeta de Lealtad</h2>
-                <p style="margin:5px 0 15px 0; font-size: 0.9rem;">¡Colecciona 5 piezas y la 6ta es <b>GRATIS</b>!</p>
+        <div class="stamps-grid">
+            <div class="stamp-circle active-stamp"><i class="fas fa-check"></i></div>
+            <div class="stamp-circle active-stamp"><i class="fas fa-check"></i></div>
+            <div class="stamp-circle active-stamp"><i class="fas fa-drumstick-bite"></i></div>
+            <div class="stamp-circle empty-stamp"></div>
+            <div class="stamp-circle empty-stamp"></div>
+            <div class="stamp-circle reward-stamp"><i class="fas fa-gift"></i></div>
+        </div>
+    </div>
+
+    <div class="ranking-container">
+        <h3 class="title-ranking">TU NIVEL KRUNCH</h3>
+        <div class="medals-row">
+            <div class="medal-item opacity-high">
+                <i class="fas fa-medal" style="color: #cd7f32;"></i>
+                <span>BRONCE</span>
             </div>
+            <div class="medal-item current-level">
+                <i class="fas fa-medal" style="color: #c0c0c0;"></i>
+                <span>PLATA</span>
+            </div>
+            <div class="medal-item opacity-low">
+                <i class="fas fa-medal" style="color: #ffd700;"></i>
+                <span>ORO</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="birthday-zone">
+        <h2 class="title-festejo">¡CELEBRAMOS CONTIGO! <i class="fas fa-birthday-cake"></i></h2>
+        <div class="birthday-grid">
+            <div class="bday-box">
+                <div class="bday-tag">¡HBD!</div>
+                <div class="bday-content">
+                    <p>En tu día especial, Mary's te regala un <b>Complemento Gratis</b></p>
+                    <button class="btn-celebrar">OBTENER REGALO</button>
+                </div>
+            </div>
+            <div class="bday-box">
+                <div class="bday-tag" style="background: var(--naranja, #ff6600);">PROMO</div>
+                <div class="bday-content">
+                    <p>¿Es tu cumple? Pide tu <b>Paquete Festejo</b> con 20% de descuento</p>
+                    <button class="btn-celebrar">VER PROMO</button>
+                </div>
+            </div>
+
+            <div class="bday-box" style="border: 2px dashed #d0d7de;">
+                <div class="bday-tag" style="background: #24292f;">REGISTRO</div>
+                <div class="bday-content">
+                    <p style="margin-bottom: 10px; font-size: 0.9rem;">Registra tu fecha para sorpresas:</p>
+                    <input type="text" id="nombre-bday" placeholder="Tu nombre" class="gh-input-style">
+                    <input type="date" id="fecha-bday" class="gh-input-style">
+                    <button class="gh-btn-save" onclick="registrarCumple()">
+                        <i class="fas fa-save"></i> GUARDAR FECHA
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .gh-input-style {
+        width: 100%;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        border: 1px solid #d0d7de;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+        background: white;
+    }
+    .gh-btn-save {
+        width: 100%;
+        background-color: #1f883d;
+        color: white;
+        border: 1px solid rgba(31,35,40,0.15);
+        border-radius: 6px;
+        padding: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Oswald', sans-serif;
+        transition: 0.2s;
+    }
+    .gh-btn-save:hover { background-color: #1a7f37; }
+    .gh-btn-save:disabled { background-color: #94d3a2; cursor: not-allowed; }
+</style>
+
+<script>
+    function registrarCumple() {
+        const btn = document.querySelector('.gh-btn-save');
+        const nombre = document.getElementById('nombre-bday').value;
+        const fecha = document.getElementById('fecha-bday').value;
+
+        if (!nombre || !fecha) {
+            alert("Por favor, completa tu nombre y fecha");
+            return;
+        }
+
+        // Simulación de carga estilo GitHub
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GUARDANDO...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-check"></i> ¡REGISTRADO!';
+            btn.style.backgroundColor = "#24292f";
+            alert("¡Genial " + nombre + "! Te hemos registrado para el " + fecha);
             
-            <div class="stamps-grid">
-                <div class="stamp-circle active-stamp"><i class="fas fa-check"></i></div>
-                <div class="stamp-circle active-stamp"><i class="fas fa-check"></i></div>
-                <div class="stamp-circle active-stamp"><i class="fas fa-drumstick-bite"></i></div>
-                <div class="stamp-circle empty-stamp"></div>
-                <div class="stamp-circle empty-stamp"></div>
-                <div class="stamp-circle reward-stamp"><i class="fas fa-gift"></i></div>
-            </div>
-        </div>
+            // Opcional: limpiar campos
+            document.getElementById('nombre-bday').value = "";
+            document.getElementById('fecha-bday').value = "";
+        }, 1500);
+    }
+</script>
 
-        <div class="ranking-container">
-            <h3 class="title-ranking">TU NIVEL KRUNCH</h3>
-            <div class="medals-row">
-                <div class="medal-item opacity-high">
-                    <i class="fas fa-medal" style="color: #cd7f32;"></i>
-                    <span>BRONCE</span>
-                </div>
-                <div class="medal-item current-level">
-                    <i class="fas fa-medal" style="color: #c0c0c0;"></i>
-                    <span>PLATA</span>
-                </div>
-                <div class="medal-item opacity-low">
-                    <i class="fas fa-medal" style="color: #ffd700;"></i>
-                    <span>ORO</span>
-                </div>
-            </div>
+<section id="promos" class="tab-content" style="padding: 0 0 40px 0; background-color: var(--crema, #fffdf5);">
+    <div class="promo-hero">
+        <div class="promo-overlay">
+            <h2 style="font-family:'Oswald'; margin:0; font-size: 2.5rem; text-transform: uppercase;">Promos Krunch</h2>
+            <p style="margin:5px 0 0 0; opacity: 0.9;">Las mejores ofertas de Mary's en un solo lugar</p>
         </div>
-
-        <div class="birthday-zone">
-            <h2 class="title-festejo">¡CELEBRAMOS CONTIGO! <i class="fas fa-birthday-cake"></i></h2>
-            <div class="birthday-grid">
-                <div class="bday-box">
-                    <div class="bday-tag">¡HBD!</div>
-                    <div class="bday-content">
-                        <p>En tu día especial, Mary's te regala un <b>Complemento Gratis</b></p>
-                        <button class="btn-celebrar">OBTENER REGALO</button>
-                    </div>
-                </div>
-                <div class="bday-box">
-                    <div class="bday-tag" style="background: var(--naranja);">PROMO</div>
-                    <div class="bday-content">
-                        <p>¿Es tu cumple? Pide tu <b>Paquete Festejo</b> con 20% de descuento</p>
-                        <button class="btn-celebrar">VER PROMO</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="promos" class="tab-content" style="padding: 0 0 40px 0; background-color: var(--crema);">
-        
-        <div class="promo-hero">
-            <div class="promo-overlay">
-                <h2 style="font-family:'Oswald'; margin:0; font-size: 2.5rem; text-transform: uppercase;">Promos Krunch</h2>
-                <p style="margin:5px 0 0 0; opacity: 0.9;">Las mejores ofertas de Mary's en un solo lugar</p>
-            </div>
-        </div>
+    </div>
+</section>
 
         <div class="promos-grid">
             <div class="promo-card">
