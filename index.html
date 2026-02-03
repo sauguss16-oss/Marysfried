@@ -518,55 +518,49 @@
         }, 1500);
     }
 </script>
+    </section>
 
-<section class="section">
-    <div class="section-title" style="font-family: 'Oswald'; background: linear-gradient(90deg, var(--rojo), var(--naranja)); color: white; padding: 10px 30px; border-radius: 30px; display: inline-block; margin-bottom: 30px; text-transform: uppercase;">
-        Nuestras Promociones
-    </div>
-    
-    <div class="promos-grid">
-        
-        <div class="promo-card">
-            <div class="promo-img-wrapper">
-                <img src="promo1.PNG" alt="Promo WoW"> 
-                <div class="promo-tag" style="position: absolute; top: 10px; right: 10px; background: var(--rojo); color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem;">TOP</div>
-            </div>
-            <div class="promo-info">
-                <h3>Promo ¡WoW!</h3>
-                <p class="promo-desc">10 piezas de pollo (pierna y muslo), puré y ensalada grande.</p>
-                <div class="promo-footer">
-                    <span class="price">$240</span>
-                    <button class="btn-promo" onclick="agregarAlPedido('Promo WoW', 240)">AÑADIR</button>
-                </div>
-            </div>
-        </div> <div class="promo-card">
-            <div class="promo-img-wrapper">
-                <img src="promo2.PNG" alt="Promo Crispy">
-            </div>
-            <div class="promo-info">
-                <h3>Promo Crispy</h3>
-                <p class="promo-desc">1 hamburguesa, papas (150g) y un refresco de 155ml.</p>
-                <div class="promo-footer">
-                    <span class="price">$99</span>
-                    <button class="btn-promo" onclick="agregarAlPedido('Promo Crispy', 99)">AÑADIR</button>
-                </div>
-            </div>
-        </div> <div class="promo-card">
-            <div class="promo-img-wrapper">
-                <img src="promo3.PNG" alt="Promo Alas">
-            </div>
-            <div class="promo-info">
-                <h3>Promo Alas</h3>
-                <p class="promo-desc">10 alitas con dos salsas a elección: Mango, BBQ o Tradicional.</p>
-                <div class="promo-footer">
-                    <span class="price">$120</span>
-                    <button class="btn-promo" onclick="agregarAlPedido('Promo Alas', 120)">AÑADIR</button>
-                </div>
-            </div>
+    <section class="krunch-invite" style="display: flex; align-items: center; padding: 20px; background: var(--amarillo); border-radius: 15px; margin: 20px 5%;">
+        <div style="flex: 1;">
+            <h2 style="margin:0; font-family:'Oswald';">¿QUIERES SER UN CLIENTE KRUNCH?</h2>
+            <p style="margin:5px 0 0 0;">Suscríbete y obtén beneficios en cada compra.</p>
         </div>
-    </div>
- </section>
+        <button class="btn-join" style="padding: 10px 20px; background: var(--rojo); color: white; border: none; border-radius: 5px; font-family: 'Oswald'; cursor: pointer;">UNIRME AHORA</button>
+    </section>
 
+    <section id="frecuentes" class="tab-content" style="padding: 60px 5%; background: #fffcf5; text-align: center;">
+        <h2 style="font-family: 'Oswald'; color: var(--rojo); font-size: 2.5rem;">BENEFICIOS EXCLUSIVOS</h2>
+        <p>Por cada 5 visitas, ¡la sexta va por nuestra cuenta!</p>
+    </section>
+
+    <div id="cart-btn" onclick="finalizarPedido()" style="position: fixed; bottom: 30px; right: 30px; background: #bd161c; color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; z-index: 1001; font-family: 'Oswald'; box-shadow: 0 8px 25px rgba(0,0,0,0.3); display: none; align-items: center; gap: 10px;">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span> PRODUCTOS - PEDIR
+    </div>
+
+    <script>
+        let pedido = [];
+        function agregarAlPedido(nombre, precio) {
+            pedido.push({ nombre, precio });
+            document.getElementById('cart-btn').style.display = 'flex';
+            document.getElementById('cart-count').innerText = pedido.length;
+        }
+
+        function finalizarPedido() {
+            if (pedido.length === 0) return;
+            const WHATSAPP_NUM = "525577479755"; 
+            let texto = "¡Hola Mary's! 🍗%0AHe armado mi pedido desde la página:%0A%0A";
+            let total = 0;
+            pedido.forEach(item => {
+                texto += `• ${item.nombre} ($${item.precio})%0A`;
+                total += item.precio;
+            });
+            texto += `%0A*Total estimado: $${total}*`;
+            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${texto}`, '_blank');
+        }
+    </script>
+
+</body> </html>
 
 
 <style>
