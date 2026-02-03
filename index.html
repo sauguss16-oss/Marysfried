@@ -170,6 +170,41 @@
         </div>
         <button class="btn-join">UNIRME AHORA</button>
     </section>
+<div id="cart-btn" onclick="finalizarPedido()" style="position: fixed; bottom: 110px; right: 30px; background: #bd161c; color: white; padding: 15px 25px; border-radius: 50px; cursor: pointer; z-index: 1001; font-family: 'Oswald'; box-shadow: 0 8px 25px rgba(0,0,0,0.3); display: none; align-items: center; gap: 10px; transition: 0.3s;">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cart-count">0</span> PRODUCTOS - ENVIAR PEDIDO
+</div>
+
+<script>
+    let pedido = [];
+
+    function agregarAlPedido(nombre, precio) {
+        pedido.push({ nombre, precio });
+        document.getElementById('cart-btn').style.display = 'flex';
+        document.getElementById('cart-count').innerText = pedido.length;
+        
+        // Efecto visual en el botón
+        const btn = document.getElementById('cart-btn');
+        btn.style.transform = 'scale(1.1)';
+        setTimeout(() => btn.style.transform = 'scale(1)', 200);
+    }
+
+    function finalizarPedido() {
+        if (pedido.length === 0) return;
+
+        const WHATSAPP_NUM = "525577479755"; // Cambia este número si es necesario
+        let texto = "¡Hola Mary's! 🍗%0AQuiero realizar un pedido:%0A%0A";
+        let total = 0;
+
+        pedido.forEach(item => {
+            texto += `• ${item.nombre} ($${item.precio})%0A`;
+            total += item.precio;
+        });
+
+        texto += `%0A*Total estimado: $${total}*%0A%0A¿Me confirman el tiempo de entrega?`;
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${texto}`, '_blank');
+    }
+</script>
 
 </body>
 </html>
@@ -503,10 +538,8 @@
                 <p class="promo-desc">10 piezas de pollo (pierna y muslo), puré y ensalada grande.</p>
                 <div class="promo-footer">
                     <span class="price">$240</span>
-                    <button class="btn-promo">PEDIR YA</button>
-                </div>
-            </div>
-        </div>
+                <button class="btn-promo" onclick="agregarAlPedido('promo 1 wow', 240)">AÑADIR</button>
+
 
         <div class="promo-card">
             <div class="promo-img-wrapper">
@@ -517,10 +550,8 @@
                 <p class="promo-desc">1 hamburguesa, papas (150g) y un refresco de 155ml.</p>
                 <div class="promo-footer">
                     <span class="price">$99</span>
-                    <button class="btn-promo">PEDIR YA</button>
-                </div>
-            </div>
-        </div>
+                <button class="btn-promo" onclick="agregarAlPedido('Promo 2 crispy', 99)">AÑADIR</button>
+
 
         <div class="promo-card">
             <div class="promo-img-wrapper">
@@ -531,10 +562,8 @@
                 <p class="promo-desc">10 alitas con dos salsas a elección: Mango, BBQ o Tradicional.</p>
                 <div class="promo-footer">
                     <span class="price">$120</span>
-                    <button class="btn-promo">PEDIR YA</button>
-                </div>
-            </div>
-        </div>
+                <button class="btn-promo" onclick="agregarAlPedido('Promo 3  alas', 120)">AÑADIR</button>
+
     </div>
 </section>
 
